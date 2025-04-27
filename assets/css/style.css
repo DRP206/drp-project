@@ -1,0 +1,433 @@
+/* Reset et Base */
+:root {
+    --primary: #23a0f3;
+    --secondary: #f1c40f;
+    --dark: #2c3e50;
+    --light: #baeaf8;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+
+.footer .container {
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: var(--primary);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 1rem;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--dark);
+    padding: 1rem 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: var(--secondary);
+}
+
+/* Cartes */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin: 1rem 0;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    color: var(--dark);
+}
+
+/* Grille responsive */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Footer */
+
+.footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 1.5rem 0;
+    margin-top: auto; /* Nouveau */
+    width: 100%; /* Nouveau */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+/* Documentation spécifique */
+.doc-card {
+    background: rgb(247, 246, 246);
+    border-left: 4px solid var(--primary);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.explanation {
+    background: #f6f7f8;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.rules-diagram {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: var(--primary);
+}
+
+pre[class*="language-"] {
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.file-tree {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+}
+
+.file-tree ul {
+    list-style-type: none;
+    padding-left: 1.5rem;
+}
+/* Section PDF */
+.downloads-section {
+    margin: 3rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid #eee;
+}
+
+.pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.pdf-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.pdf-card:hover {
+    transform: translateY(-5px);
+}
+
+.pdf-icon {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.pdf-btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.pdf-btn:hover {
+    background: #c0392b;
+}
+
+/* Indicateur de taille */
+.pdf-btn::after {
+    content: "↓";
+    margin-left: 5px;
+}
+/* ===== Styles pour la page À propos ===== */
+.about-section, .team-section, .goals-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.lead-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.team-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.goals-list {
+    padding-left: 1.5rem;
+}
+
+.goals-list li {
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+/* Styles spécifiques pour la page Contact */
+.contact-form {
+    background: rgb(51, 155, 253);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.contact-form .form-label {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.contact-form .form-control {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+}
+
+.contact-form .btn-primary {
+    background-color:rgb(238, 8, 207);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+}
+/* Styles pour le formulaire de contact */
+.contact-section {
+    padding: 2rem 0;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-group textarea {
+    min-height: 150px;
+}
+
+.btn-submit {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--secondary);
+}
+
+/* Placeholders */
+::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+/* Style des indications dans les champs */
+::placeholder {
+    color: #999 !important;
+    font-size: 0.9rem;
+    opacity: 1; /* Pour Firefox */
+}
+
+/* Pour Internet Explorer */
+:-ms-input-placeholder {
+    color: #999 !important;
+}
+
+/* Pour Edge */
+::-ms-input-placeholder {
+    color: #999 !important;
+}
+/* Dans assets/css/style.css */
+[data-formspree-success] {
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+[data-formspree-error] {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+/* Styles pour la page de confirmation */
+.confirmation-section {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.confirmation-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.confirmation-card svg {
+    margin-bottom: 1.5rem;
+}
+
+.confirmation-card h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.confirmation-card p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: var(--dark);
+}
+
+.btn-secondary:hover {
+    background: #e0b800;
+}

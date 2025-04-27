@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documnetation-DRP206</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/img/logo.svg">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <img src="assets/img/logo.png" alt="Logo DRP206" class="logo" width="80">
+            <h1>Documentation</h1>
+            <p class="subtitle">Apprenez la programmation web par la pratique</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" >Accueil</a>
+            <a href="jeu.html">Jouer</a>
+            <a href="doc.html" class="active">Documentation</a>
+            <a href="apropos.html">À propos</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+
+    <main class="container">
+        <section class="doc-section">
+            <article class="doc-card">
+                <h2>🗂️ Structure du Projet</h2>
+                <div class="file-tree">
+                    <ul>
+                        <li>📁 assets/
+                            <ul>
+                                <li>📁 css/</li>
+                                <li>📁 js/
+                                    <ul>
+                                        <li>jeu.js</li>
+                                        <li>animations.js</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>📄 index.html</li>
+                        <li>📄 jeu.html</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="doc-card">
+                <h2>🖥️ HTML - Structure de Base</h2>
+                <p>Le jeu utilise une structure simple avec des boutons cliquables :</p>
+                <pre><code class="language-html">&lt;div class="game-container"&gt;
+    &lt;button class="choice-btn" data-choice="pierre"&gt;
+        &lt;img src="assets/img/pierre.svg" alt="Pierre"&gt;
+    &lt;/button&gt;
+    &lt;!-- Boutons similaires pour Feuille/Ciseaux --&gt;
+    &lt;div id="result-display"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <div class="explanation">
+                    <p><strong>Points clés :</strong></p>
+                    <ul>
+                        <li>Attribut <code>data-choice</code> pour identifier le choix du joueur</li>
+                        <li>Structure accessible avec balises <code>alt</code> pour les images</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="doc-card">
+                <h2>🎨 CSS - Stylisation du Jeu</h2>
+                <pre><code class="language-css">.choice-btn {
+    background: var(--primary);
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.choice-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+}</code></pre>
+                <div class="explanation">
+                    <p><strong>Effets visuels :</strong></p>
+                    <ul>
+                        <li>Animation au survol avec <code>transform</code></li>
+                        <li>Variables CSS pour une cohérence des couleurs</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="doc-card">
+                <h2>⚙️ JavaScript - Logique du Jeu</h2>
+                <h3>1. Fonction de l'ordinateur</h3>
+                <pre><code class="language-javascript">function computerPlay() {
+    const choices = ['pierre', 'feuille', 'ciseaux'];
+    return choices[Math.floor(Math.random() * 3)];
+}</code></pre>
+
+                <h3>2. Détermination du gagnant</h3>
+                <pre><code class="language-javascript">function playRound(playerSelection) {
+    const computerSelection = computerPlay();
+    
+    if (playerSelection === computerSelection) {
+        return 'Égalité !';
+    } else if (
+        (playerSelection === 'pierre' && computerSelection === 'ciseaux') ||
+        (playerSelection === 'feuille' && computerSelection === 'pierre') ||
+        (playerSelection === 'ciseaux' && computerSelection === 'feuille')
+    ) {
+        return 'Vous gagnez !';
+    } else {
+        return 'Vous perdez !';
+    }
+}</code></pre>
+
+                <div class="explanation">
+                    <p><strong>Diagramme des règles :</strong></p>
+                    <div class="rules-diagram">
+                        <p>Pierre 🗿 > Ciseaux ✂️</p>
+                        <p>Ciseaux ✂️ > Feuille 🧻</p>
+                        <p>Feuille 🧻 > Pierre 🗿</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="doc-card">
+                <h2>🔗 Gestion des Événements</h2>
+                <pre><code class="language-javascript">document.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const result = playRound(btn.dataset.choice);
+        displayResult(result);
+    });
+});</code></pre>
+                <div class="explanation">
+                    <p><strong>Flux d'exécution :</strong></p>
+                    <ol>
+                        <li>1. Clic sur un bouton</li>
+                        <li>2. Récupération du choix via <code>dataset</code></li>
+                        <li>3. Appel de <code>playRound()</code></li>
+                        <li>4. Affichage du résultat</li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="doc-card">
+                <h2>📱 Responsive Design</h2>
+                <pre><code class="language-css">@media (max-width: 600px) {
+    .choice-btn {
+        padding: 0.8rem;
+        margin: 0.5rem;
+    }
+}</code></pre>
+                <p>Le jeu s'adapte aux écrans mobiles avec des Media Queries.</p>
+            </article>
+        </section>
+        <!-- Après la section principale de documentation -->
+<section class="downloads-section">
+    <h2>📚 Ressources Téléchargeables</h2>
+    <div class="pdf-grid">
+        <!-- Carte PDF 1 -->
+        <article class="pdf-card">
+            <div class="pdf-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="40">
+                    <path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.5 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.9 44.5-73.9 44.5v-180s66.3-21.5 88.3-27.8c23.2-6.5 46.8-13 72.8-13 57.8 0 100 16.3 100 70.1 0 35-29.8 55.4-74.8 61.1zM80 356c45.4-21 66-26.9 94-32.5 6.5-18.1 1-39.1-7.4-56-8-15.5-23.6-16.1-28.6-1.8-10.5 30.5-7.1 58.3-58 90.3z"/>
+                </svg>
+            </div>
+            <h3>Guide Complet</h3>
+            <p>Toutes les étapes du projet expliquées en détail</p>
+            <a href="assets/docs/Tutoriel_Pierre_Feuille_Ciseaux_JavaScript.pdf" download class="pdf-btn">
+                Télécharger (2.1 Mo)
+            </a>
+        </article>
+
+        <!-- Carte PDF 2 -->
+        <article class="pdf-card">
+            <div class="pdf-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="40">
+                    <path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.5 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.9 44.5-73.9 44.5v-180s66.3-21.5 88.3-27.8c23.2-6.5 46.8-13 72.8-13 57.8 0 100 16.3 100 70.1 0 35-29.8 55.4-74.8 61.1zM80 356c45.4-21 66-26.9 94-32.5 6.5-18.1 1-39.1-7.4-56-8-15.5-23.6-16.1-28.6-1.8-10.5 30.5-7.1 58.3-58 90.3z"/>
+                </svg>
+            </div>
+            <h3>Référence du Code</h3>
+            <p>Documentation technique des fonctions JavaScript</p>
+            <a href="assets/docs/Tutoriel_Pierre_Feuille_Ciseaux_JavaScript.pdf" download class="pdf-btn">
+                Télécharger (1.5 Mo)
+            </a>
+        </article>
+    </div>
+    <section class="downloads">
+    <h3>📥 Téléchargements</h3>
+    <a href="assets/docs/guide-installation.pdf" download class="btn-pdf">
+        Guide complet (PDF)
+    </a>
+    <a href="assets/docs/reference-code.pdf" download class="btn-pdf">
+        Référence code (PDF)
+    </a>
+</section>
+</section>
+
+        <section class="bonus-section">
+            <h2>💡 Pour Aller Plus Loin</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Améliorations Possibles</h3>
+                    <ul>
+                        <li>Ajouter un système de scores persistants</li>
+                        <li>Implémenter un mode 2 joueurs</li>
+                        <li>Ajouter des animations CSS avancées</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Ressources Utiles</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" target="_blank">MDN JavaScript</a></li>
+                        <li><a href="https://flexboxfroggy.com/" target="_blank">Jeu pour apprendre CSS Flexbox</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 DRP Project. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts pour la coloration syntaxique -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-html.min.js"></script>
+</body>
+</html>
